@@ -11,8 +11,8 @@ const BookCard = ({ imageUrl, title, category, authors }) => {
         />
       </div>
       <div className="text-start mt-3">
-        <div className={`text-sm text-gray-400 underline ${!category ? 'invisible' : ''}`}>
-          {category?.[0] ?? "no category"}
+        <div className="text-sm text-gray-400 underline min-h-5">
+          {category?.[0] ?? " "}
         </div>
         <div className="text-md font-bold leading-none line-clamp-2 mt-3">
           {title}
