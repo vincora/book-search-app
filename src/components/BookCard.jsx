@@ -7,7 +7,7 @@ const BookCard = ({ imageUrl, title, category, authors }) => {
         <img
           src={imageUrl}
           alt={title}
-          className="h-full p-2 mx-auto drop-shadow-xl"
+          className="h-full p-2 mx-auto drop-shadow-[7px_5px_7px_rgba(0,0,0,0.35)]"
         />
       </div>
       <div className="text-start mt-3">
