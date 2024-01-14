@@ -14,16 +14,15 @@ function App() {
   });
 
   const handleSearch = (data) => {
-    console.log(data)
     setQuery({
-      input: data.query,
+      input: data.input,
       category: data.category,
-      sorting: data.sorting
+      sorting: data.sort
     })
   }
 
-
   useEffect(() => {
+    console.log(query)
     fetchBooks(query)
   }, [query])
 

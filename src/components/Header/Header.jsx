@@ -16,14 +16,14 @@ import { Form, FormControl, FormField, FormItem } from "../ui/form";
 
 const Header = ({onSearch}) => {
   const formSchema = z.object({
-    query: z.string(),
+    input: z.string(),
     category: z.string(),
     sort: z.string(),
   });
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      query: "",
+      input: "",
       category: "all",
       sort: "relevance",
     },
@@ -33,6 +33,7 @@ const Header = ({onSearch}) => {
     console.log("onSubmit", { formData });
     onSearch(formData)
   };
+
   return (
     <div className="">
       <Form {...form}>
@@ -45,7 +46,7 @@ const Header = ({onSearch}) => {
           <div className="flex flex-col gap-3 sm:flex-row w-1/2 mx-auto items-center space-x-2">
             <FormField
               control={form.control}
-              name="query"
+              name="input"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
