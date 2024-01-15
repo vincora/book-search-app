@@ -1,43 +1,33 @@
+import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
-import { useEffect, useState } from "react";
-import { useApiBooks } from "./api/useApiBooks";
 import BookCard from "./components/BookCard";
 import Header from "./components/Header/Header";
+import { setBooks } from "./app/appSlice";
 import { fetchBooks } from "./api/fetchBooks";
 
 function App() {
-  const booksQuery = useApiBooks();
-  const [query, setQuery] = useState({
-    input: '',
-    category: 'all',
-    sorting: 'relevance'
-  });
+  const booksData = useSelector((state) => state.books);
+  const totalBooks = useSelector(state => state.total)
+  const dispatch = useDispatch();
 
-  const handleSearch = (data) => {
-    setQuery({
-      input: data.input,
-      category: data.category,
-      sorting: data.sort
-    })
-  }
-
-  useEffect(() => {
-    console.log(query)
-    fetchBooks(query)
-  }, [query])
+  const handleSearch = async (data) => {
+    const reponse = await fetchBooks(data);
+    dispatch(setBooks(reponse));
+  };
 
   return (
     <div className="space-y-4">
-      <Header onSearch={handleSearch}/>
+      <Header onSearch={handleSearch} />
+      <p>{totalBooks && `Found ${totalBooks} results`}</p>
       <ul className="flex flex-wrap gap-5 justify-center">
-        {booksQuery?.data?.items.map((item) => {
+        {booksData?.map((item) => {
           return (
-            <li key={item.id} >
+            <li key={item.id}>
               <BookCard
-                imageUrl={item?.volumeInfo?.imageLinks?.smallThumbnail}
-                title={item.volumeInfo.title}
-                authors={item.volumeInfo.authors}
-                category={item.volumeInfo.categories}
+                imageUrl={item.imageUrl}
+                title={item.title}
+                authors={item.authors}
+                category={item.category}
               />
             </li>
           );

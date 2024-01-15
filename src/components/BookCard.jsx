@@ -18,7 +18,7 @@ const BookCard = ({ imageUrl, title, category, authors }) => {
           {title}
         </div>
         <div className="text-xs leading-none line-clamp-2 mt-1 text-gray-400 ">
-          {authors.join(', ')}
+          {authors?.join(', ')}
         </div>
       </div>
     </div>

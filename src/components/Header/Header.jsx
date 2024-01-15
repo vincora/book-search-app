@@ -14,7 +14,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
 
-const Header = ({onSearch}) => {
+const Header = ({ onSearch }) => {
+
   const formSchema = z.object({
     input: z.string(),
     category: z.string(),
@@ -29,16 +30,11 @@ const Header = ({onSearch}) => {
     },
   });
 
-  const handleSumbit = (formData) => {
-    console.log("onSubmit", { formData });
-    onSearch(formData)
-  };
-
   return (
     <div className="">
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(handleSumbit)}
+          onSubmit={form.handleSubmit(onSearch)}
           className="space-y-5 p-7 bg-cover bg-center"
           style={{ backgroundImage: `url(${imgUrl})` }}
         >
