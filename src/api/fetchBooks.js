@@ -1,9 +1,7 @@
-import { setBooks } from "@/app/appSlice";
-
-const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
+const apiKey = encodeURI(import.meta.env.VITE_GOOGLE_BOOKS_API_KEY);
 
 export const fetchBooks = async (query) => {
-  const searchQuery = query.input.split(' ').join('+');
+  const searchQuery = encodeURI(query.input);
   const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${apiKey}`;
 
   const response = await fetch(apiUrl);
