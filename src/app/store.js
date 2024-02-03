@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import formReducer from "./appSlice";
+import booksSliceReducer from "./booksSlice";
 
 export default configureStore({
-  reducer: formReducer
+  reducer: booksSliceReducer,
 });

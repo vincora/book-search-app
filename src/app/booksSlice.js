@@ -5,7 +5,7 @@ const initialState = {
   total: undefined,
 };
 
-export const appSlice = createSlice({
+export const booksSlice = createSlice({
   name: "books",
   initialState: initialState,
   reducers: {
@@ -16,6 +16,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setBooks } = appSlice.actions;
+export const { setBooks } = booksSlice.actions;
 
-export default appSlice.reducer;
+export default booksSlice.reducer;
