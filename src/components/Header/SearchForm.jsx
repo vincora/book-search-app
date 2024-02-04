@@ -14,8 +14,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
 
-const Header = ({ onSearch }) => {
-
+const SearchForm = ({ onSearch }) => {
   const formSchema = z.object({
     input: z.string(),
     category: z.string(),
@@ -120,4 +119,4 @@ const Header = ({ onSearch }) => {
   );
 };
 
-export default Header;
+export default SearchForm;
