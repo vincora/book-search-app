@@ -10,12 +10,16 @@ export const booksSlice = createSlice({
   initialState: initialState,
   reducers: {
     setBooks: (state, action) => {
-      state.books = action.payload.items;
+      state.books = state.books.concat(action.payload.items);
       state.total = action.payload.total;
     },
+    resetBooks: (state) => {
+      state.books = [],
+      state.total = undefined
+    }
   },
 });
 
-export const { setBooks } = booksSlice.actions;
+export const { setBooks, resetBooks } = booksSlice.actions;
 
 export default booksSlice.reducer;
