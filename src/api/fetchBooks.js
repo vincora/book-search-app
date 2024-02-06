@@ -20,9 +20,11 @@ export const fetchBooks = async (searchQuery, page) => {
     items: data.items.map((item) => ({
       title: item.volumeInfo.title,
       imageUrl: item.volumeInfo.imageLinks?.smallThumbnail,
+      imageUrlBig: item.volumeInfo.imageLinks?.thumbnail,
       authors: item.volumeInfo.authors,
       category: item.volumeInfo.categories,
       id: item.id,
+      description: item.volumeInfo.description
     })),
   };
 };
